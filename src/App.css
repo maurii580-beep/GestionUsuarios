@@ -1,0 +1,237 @@
+/* =========================================
+   ESTILOS GENERALES
+   ========================================= */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f7f6;
+  color: #333;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.app-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.app-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.app-header h1 {
+  color: #2c3e50;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background: #ccc;
+  margin: 40px 0;
+}
+
+/* =========================================
+   BARRA DE BÚSQUEDA Y FILTROS
+   ========================================= */
+.search-bar {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.search-bar input {
+  padding: 12px;
+  width: 50%;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+.teacher-select {
+  padding: 12px;
+  margin-left: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  background-color: white;
+  cursor: pointer;
+}
+
+/* =========================================
+   GRILLA Y TARJETAS DE CURSOS
+   ========================================= */
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.course-card {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  border-left: 5px solid #3498db;
+  transition: background-color 0.3s, border-left 0.3s;
+}
+
+.course-card h3 {
+  margin-top: 0;
+  color: #2980b9;
+}
+
+.course-card p {
+  flex-grow: 1;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.teacher-id {
+  font-size: 12px;
+  color: #7f8c8d;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.course-card button {
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #3498db;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.course-card button:hover {
+  background-color: #2980b9;
+}
+
+.course-card.favorite {
+  background-color: #fff9e6;
+  border-left: 5px solid #f1c40f;
+}
+
+.course-card.favorite button {
+  background-color: #e74c3c;
+}
+
+.course-card.favorite button:hover {
+  background-color: #c0392b;
+}
+
+/* =========================================
+   ESTADÍSTICAS (DESAFÍO 2)
+   ========================================= */
+.stats-section {
+  background-color: #e8f4f8;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  border-left: 5px solid #3498db;
+}
+
+.stats-list {
+  list-style-type: none;
+  margin-top: 15px;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  padding: 0;
+}
+
+.stats-list li {
+  background: white;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-size: 14px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* =========================================
+   MODO OSCURO (DESAFÍO 3)
+   ========================================= */
+.theme-toggle {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.theme-toggle button {
+  background-color: #34495e;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+}
+
+.theme-toggle button:hover {
+  background-color: #2c3e50;
+}
+
+body.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+body.dark-mode .app-header h1 {
+  color: #fff;
+}
+
+body.dark-mode section h2 {
+  color: #64b5f6;
+}
+
+body.dark-mode hr {
+  background: #333;
+}
+
+body.dark-mode .search-bar input {
+  background-color: #1e1e1e;
+  color: #fff;
+  border: 1px solid #444;
+}
+
+body.dark-mode .teacher-select {
+  background-color: #1e1e1e;
+  color: white;
+  border: 1px solid #444;
+}
+
+body.dark-mode .course-card {
+  background-color: #1e1e1e;
+  box-shadow: 0 4px 6px rgba(255, 255, 255, 0.05);
+  border-left: 5px solid #64b5f6;
+}
+
+body.dark-mode .course-card.favorite {
+  background-color: #2a2a1e;
+  border-left: 5px solid #ffd54f;
+}
+
+body.dark-mode .course-card h3 {
+  color: #90caf9;
+}
+
+body.dark-mode .course-card p {
+  color: #b0b0b0;
+}
+
+body.dark-mode .teacher-id {
+  color: #777;
+}
+
+body.dark-mode .stats-section {
+  background-color: #1a252f;
+  border-left: 5px solid #2980b9;
+}
+
+body.dark-mode .stats-list li {
+  background: #2c3e50;
+  color: #e0e0e0;
+}
