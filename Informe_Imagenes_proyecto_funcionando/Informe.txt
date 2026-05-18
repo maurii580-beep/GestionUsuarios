@@ -1,0 +1,120 @@
+================================================================================
+                           INACAP - SEDE VALPARAÍSO
+                   CARRERA: ANALISTA PROGRAMADOR
+================================================================================
+ASIGNATURA : Programación Front End
+PROFESOR   : Miguel Chacana
+ALUMNO     : Mauricio Andrés Toro Herrera
+PROYECTO   : Gestor de Cursos SPA (React + Vite)
+FECHA      : Mayo 2026
+================================================================================
+
+--------------------------------------------------------------------------------
+1. INTRODUCCIÓN Y ARQUITECTURA DEL PROYECTO
+--------------------------------------------------------------------------------
+El presente informe documenta el desarrollo, implementación y análisis de calidad 
+de la aplicación "Gestor de Cursos SPA", construida sobre la biblioteca React y 
+empaquetada mediante Vite. El diseño arquitectónico se fundamenta en componentes 
+funcionales, el uso de Hooks personalizados para la separación de lógica y estado, 
+y servicios modulares dedicados al consumo de datos asíncronos. 
+
+El repositorio final aloja tanto el código fuente estructurado como las 
+evidencias de análisis estático, consolidando un flujo de trabajo alineado con 
+las buenas prácticas de la ingeniería de software moderna.
+
+Estructura de Directorios del Repositorio:
+gestor-cursos-react/
+├── src/
+│   ├── components/       # Componentes visuales atómicos (Header, SearchBar, etc.)
+│   ├── hooks/            # Hooks personalizados (useLocalStorage)
+│   ├── services/         # Capa de servicios API (courseService con Axios)
+│   ├── App.jsx           # Componente orquestador principal
+│   ├── App.css           # Capa de estilos globales y modo oscuro
+│   └── main.jsx          # Punto de entrada de la SPA
+├── imagenes/             # Directorio de evidencias (Capturas de pantalla)
+├── informe.txt           # Presente informe de entrega técnica
+└── sonar-project.properties # Configuración del motor SonarQube
+
+
+--------------------------------------------------------------------------------
+2. FUNCIONALIDADES BASE E IMPLEMENTACIÓN DE AXIOS
+--------------------------------------------------------------------------------
+La aplicación cumple con los requisitos operacionales base:
+
+- Consumo Asíncronos (API): Se implementó la librería Axios dentro del módulo 
+  'src/services/courseService.js' para realizar peticiones HTTP de tipo GET a un 
+  endpoint simulado (JSONPlaceholder). La data recuperada es mapeada y adaptada 
+  en tiempo de ejecución para cumplir con el modelo de datos interno del gestor 
+  (id, title, description, teacherId).
+- Manejo de Estados de Carga y Error: El componente principal controla de forma 
+  reactiva los estados de carga ('loading') y captura de excepciones ('error'), 
+  garantizando una interfaz de usuario resistente a fallos en la red.
+- Renderizado Dinámico: Listado inteligente de cursos mediante componentes 
+  reutilizables independientes ('CourseList' y 'CourseCard').
+
+
+--------------------------------------------------------------------------------
+3. DESAFÍOS EXTRAS IMPLEMENTADOS
+--------------------------------------------------------------------------------
+Con el objetivo de mejorar la SPA y en el desarrollo Front-End, se incorporaron
+ tres extensiones técnicas:
+
+[Desafío 1] Filtro Avanzado por Docente:
+El componente 'SearchBar' incluye un elemento de selección dinámica (<select>) 
+que extrae de forma automática los identificadores únicos de los profesores 
+disponibles en la data ('uniqueTeachers'). El flujo filtra el catálogo en tiempo 
+real de manera combinada con la barra de búsqueda de texto tradicional.
+
+[Desafío 2] Panel de Estadísticas en Tiempo Real:
+Se diseñó una sección estadística reactiva que computa la cantidad exacta de 
+cursos marcados como favoritos agrupados por cada docente ('favoritesPerTeacher').
+
+[Desafío 3] Modo Oscuro Global Permanente:
+Implementación de una hoja de estilos extendida en 'App.css' controlada por una 
+clase mutadora en el elemento 'body'.
+
+
+--------------------------------------------------------------------------------
+4. PERSISTENCIA DE DATOS (LOCALSTORAGE Y CUSTOM HOOKS)
+--------------------------------------------------------------------------------
+La gestión de datos persistentes no se realiza de forma directa en los componentes, 
+sino delegada a un Hook personalizado denominado 'useLocalStorage.js'. 
+
+Este mecanismo encapsula los métodos 'window.localStorage.getItem' y 
+'setItem', controlando posibles excepciones en la lectura de strings JSON. 
+Gracias a esta abstracción, tanto el arreglo de cursos 'favorites' como el 
+estado booleano de 'isDarkMode' persisten de forma transparente en el navegador 
+del usuario, superando los ciclos de recarga de página ordinarios (F5).
+
+
+--------------------------------------------------------------------------------
+5. ANÁLISIS DE CALIDAD CON SONARQUBE
+--------------------------------------------------------------------------------
+El aseguramiento de la calidad del código fuente se auditó mediante un servidor 
+local de SonarQube (edición LTS Community) montado sobre contenedores Docker 
+('sonarqube_eva'). El análisis estático de código arrojó los siguientes 
+indicadores determinantes:
+
+- Estado General del Quality Gate: PASSED (Aprobado)
+- Errores de Código (Bugs): 0
+- Vulnerabilidades detectadas: 0
+- Porcentaje de Código Duplicado: 0.0%
+
+La ausencia absoluta de "code smells" y vulnerabilidades valida que la 
+arquitectura de software cumple con criterios rigurosos de mantenibilidad, 
+seguridad de la información y limpieza algorítmica.
+
+*(Nota: Las imágenes que respaldan este estado técnico se encuentran adjuntas 
+en el directorio '/imagenes' de este repositorio corporativo).*
+
+
+--------------------------------------------------------------------------------
+6. REFLEXIÓN SOBRE EL USO DE INTELIGENCIA ARTIFICIAL EN EL DESARROLLO
+--------------------------------------------------------------------------------
+El uso de IA durante este proyecto se hizo bajo un rol de asistencia técnica constructiva. 
+
+La IA actuó como un consultor de infraestructura para acelerar el despliegue del 
+contenedor Docker, solucionar conflictos de variables de entorno y optimizar las 
+configuraciones como agregar los filtros, el modo oscuro y el formato de este documento.
+ Esto permitió enfocar los esfuerzos de desarrollo en el diseño lógico, elevando la eficiencia técnica
+ y garantizando un estándar de calidad verificado por herramientas de análisis estático industrial.
